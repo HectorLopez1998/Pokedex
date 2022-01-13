@@ -1,0 +1,1 @@
+Learn about pokemons with this project that I created using the pokemon API. I expect this to be a very fun project since I'll be learning how to work with an API for the first time.
