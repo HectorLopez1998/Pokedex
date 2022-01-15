@@ -1,3 +1,4 @@
+
 const poke_container = document.getElementById('poke-container');
 const pokemon_count = 150;
 const colors = {
@@ -28,6 +29,26 @@ const getPokemon = async (id) => {
   const res = await fetch(url)
   const data = await res.json()
   console.log(data);
+  createPokemonCard(data)
+}
+const createPokemonCard = (pokemon) => {
+  const pokemonEl = document.createElement('div')
+  pokemonEl.classList.add('pokemon')
+  const name = pokemon.name[0].toUpperCase() + pokemon.name.slice([1])
+  const pokemonInnerHTML = `
+  <div class="img-container">
+  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" alt="">
+  </div>
+  <div class="info">
+  <span class="number">${pokemon.id}</span>
+  <h3 class="name">${name}</h3>
+  <small class="type">Type: <span>grass</span></small>
+  </div>
+  `
+
+  pokemonEl.innerHTML = pokemonInnerHTML
+
+  poke_container.appendChild(pokemonEl)
 }
 
 fecthPokemons()
